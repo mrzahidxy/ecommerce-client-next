@@ -7,12 +7,13 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="py-4 shadow-sm bg-white">
-      <div className="container flex items-center justify-between">
-        <div>Logo</div>
+    <div className="py-3 shadow-sm bg-white ">
+      <div className="container flex flex-col items-center gap-2 md:flex-row md:justify-between \ ">
+        <div className="text-3xl">Logo</div>
 
         {/* searchbar  */}
 
@@ -32,9 +33,9 @@ const Header = () => {
 
         {/* actions-icon */}
         <div className="flex items-center space-x-8">
-          <a
+          <Link
             href="#"
-            className="flex flex-col items-center text-gray-700 hover:text-primary relative"
+            className="flex flex-col items-center text-gray-800 hover:text-primary relative"
           >
             <div className="text-2xl">
               <FontAwesomeIcon icon={faBagShopping} />
@@ -43,10 +44,10 @@ const Header = () => {
             <span className="absolute bottom-9 left-5 w-5 h-5 flex items-center justify-center rounded-full bg-primary text-white ">
               3
             </span>
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
-            className="flex flex-col items-center text-gray-700 hover:text-primary relative"
+            className="flex flex-col items-center text-gray-800 hover:text-primary relative"
           >
             <div className="text-2xl">
               <FontAwesomeIcon icon={faHeart} />
@@ -55,16 +56,16 @@ const Header = () => {
             <span className="absolute bottom-9 left-8 w-5 h-5 flex items-center justify-center rounded-full bg-primary text-white ">
               3
             </span>
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
-            className="flex flex-col items-center text-gray-700 hover:text-primary relative"
+            className="flex flex-col items-center text-gray-800 hover:text-primary relative"
           >
             <div className="text-2xl">
               <FontAwesomeIcon icon={faUser} />
             </div>
             <span className="leading-6">Profile</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

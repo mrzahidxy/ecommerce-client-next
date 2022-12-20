@@ -1,14 +1,15 @@
 import { faHeart, faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import React from "react";
 
 const Product = () => {
   return (
     <div className="container py-8">
-      <h1 className="text-3xl text-gray-800 uppercase font-medium mb-5">
+      <h1 className="text-2xl text-gray-800 uppercase font-medium mb-5">
         New Arrivals
       </h1>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         <div className="bg-white shadow rounded overflow-hidden">
           <div className="relative group">
             <img
@@ -16,12 +17,15 @@ const Product = () => {
               className="w-full"
             />
             <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
-              <div className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
+              <Link
+                href="/products/2"
+                className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition"
+              >
                 <FontAwesomeIcon
                   icon={faSearch}
                   className="text-sm text-white group-hover:text-primary transition"
                 />
-              </div>
+              </Link>
               <div className="text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
                 <FontAwesomeIcon
                   icon={faHeart}
@@ -63,12 +67,15 @@ const Product = () => {
               className="w-full"
             />
             <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
-              <div className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
+              <Link
+                href="/products/2"
+                className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition"
+              >
                 <FontAwesomeIcon
                   icon={faSearch}
                   className="text-sm text-white group-hover:text-primary transition"
                 />
-              </div>
+              </Link>
               <div className="text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
                 <FontAwesomeIcon
                   icon={faHeart}
@@ -110,12 +117,15 @@ const Product = () => {
               className="w-full"
             />
             <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
-              <div className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
+              <Link
+                href="/products/1"
+                className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition"
+              >
                 <FontAwesomeIcon
                   icon={faSearch}
                   className="text-sm text-white group-hover:text-primary transition"
                 />
-              </div>
+              </Link>
               <div className="text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
                 <FontAwesomeIcon
                   icon={faHeart}
@@ -157,12 +167,15 @@ const Product = () => {
               className="w-full"
             />
             <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
-              <div className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
+              <Link
+                href="/products/3"
+                className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition"
+              >
                 <FontAwesomeIcon
                   icon={faSearch}
                   className="text-sm text-white group-hover:text-primary transition"
                 />
-              </div>
+              </Link>
               <div className="text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition">
                 <FontAwesomeIcon
                   icon={faHeart}

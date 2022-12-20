@@ -11,13 +11,15 @@ import React from "react";
 const Feature = () => {
   return (
     <div className="container py-8">
-      <div className="w-10/12 grid grid-cols-3 gap-6 mx-auto">
+      <div className="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
         <div className="border border-primary rounded py-5 flex items-center gap-4 justify-center">
           <div className="text-4xl text-primary">
             <FontAwesomeIcon icon={faTruck} />
           </div>
           <div>
-            <h3 className="text-xl font-medium capitalize">Free Shipping</h3>
+            <h3 className="text-xl text-gray-800 font-medium capitalize">
+              Free Shipping
+            </h3>
             <p className="text-sm text-gray-500 font-medium capitalize">
               Oreder over 200TK
             </p>
@@ -28,7 +30,7 @@ const Feature = () => {
             <FontAwesomeIcon icon={faMoneyBillTransfer} />
           </div>
           <div>
-            <h3 className="text-xl font-medium">Money Return</h3>
+            <h3 className="text-xl text-gray-800  font-medium">Money Return</h3>
             <p className="text-sm text-gray-500 font-medium capitalize">
               30 days money return
             </p>
@@ -39,7 +41,7 @@ const Feature = () => {
             <FontAwesomeIcon icon={faClockRotateLeft} />
           </div>
           <div>
-            <h3 className="text-xl font-medium">24*7 Support</h3>
+            <h3 className="text-xl text-gray-800 font-medium">24*7 Support</h3>
             <p className="text-sm text-gray-500 font-medium capitalize">
               Customer Support
             </p>

@@ -3,8 +3,10 @@ import React from "react";
 const Categories = () => {
   return (
     <div className="container py-8">
-      <h1 className="text-3xl text-gray-800 font-medium mb-10">Shop By Category</h1>
-      <div className="grid grid-cols-3 gap-10">
+      <h1 className="text-2xl text-gray-800 font-medium mb-5 uppercase">
+        Shop By Category
+      </h1>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
         <div className="relative rounded-smoverflow-hidden group">
           <img
             className="w-full"

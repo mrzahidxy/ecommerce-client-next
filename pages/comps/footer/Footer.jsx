@@ -7,9 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Footer = () => {
   return (
-    <footer className="bg-white border border-t-gray-100">
+    <footer className="bg-white border border-t bnorder-gray-200">
       <div className="container py-12">
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="col-span-1 space-y-4">
             <div className="text-3xl text-gray-800">LOGO</div>
             <p className="text-gray-500">
