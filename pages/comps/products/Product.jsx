@@ -7,7 +7,6 @@ import React from "react";
 
 const Product = ({ products, title }) => {
 
-  console.log(products)
 
   return (
     <div className="container py-8">
@@ -16,7 +15,7 @@ const Product = ({ products, title }) => {
       </h1>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-        {products.map((product) => (
+        {products?.map((product) => (
           <div className="bg-white shadow rounded overflow-hidden" key={product.id}>
             <div className="relative group">
               <img src={product.img} className="w-full" />
