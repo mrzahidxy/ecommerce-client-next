@@ -3,11 +3,11 @@ import React from "react";
 const Categories = () => {
   const items = [
     { id: 1, name: "Chair", quantity: 10 },
-    { id: 1, name: "Sofa", quantity: 12 },
-    { id: 1, name: "Bedroom", quantity: 23 },
-    { id: 1, name: "Table", quantity: 15 },
-    { id: 1, name: "Chair", quantity: 10 },
-    { id: 1, name: "Sofa", quantity: 12 },
+    { id: 2, name: "Sofa", quantity: 12 },
+    { id: 3, name: "Bedroom", quantity: 23 },
+    { id: 4, name: "Table", quantity: 15 },
+    { id: 5, name: "Chair", quantity: 10 },
+    { id: 6, name: "Sofa", quantity: 12 },
   ];
 
   return (
@@ -17,7 +17,7 @@ const Categories = () => {
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
         {items.map((item) => (
-          <div className="relative rounded-smoverflow-hidden group">
+          <div className="relative rounded-smoverflow-hidden group" key={item.id}>
             <img
               className="w-full"
               src="https://media.istockphoto.com/id/1293762741/photo/modern-living-room-interior-3d-render.jpg?b=1&s=170667a&w=0&k=20&c=Ko289acalSrEKwYI5sb20u2WQa7KS9L-_0Ug4u2iEmc="

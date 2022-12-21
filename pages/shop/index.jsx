@@ -15,22 +15,22 @@ import React from "react";
 const index = () => {
   const items = [
     { id: 1, name: "Chair", quantity: 10 },
-    { id: 1, name: "Sofa", quantity: 12 },
-    { id: 1, name: "Bedroom", quantity: 23 },
-    { id: 1, name: "Table", quantity: 15 },
+    { id: 2, name: "Sofa", quantity: 12 },
+    { id: 3, name: "Bedroom", quantity: 23 },
+    { id: 4, name: "Table", quantity: 15 },
   ];
 
   const brands = [
     { id: 1, name: "RFL", quantity: 10 },
-    { id: 1, name: "OTOBI", quantity: 12 },
-    { id: 1, name: "ABC", quantity: 23 },
-    { id: 1, name: "TXYZ", quantity: 15 },
+    { id: 2, name: "OTOBI", quantity: 12 },
+    { id: 3, name: "ABC", quantity: 23 },
+    { id: 4, name: "TXYZ", quantity: 15 },
   ];
   const sizes = [
     { id: 1, name: "S" },
-    { id: 1, name: "M" },
-    { id: 1, name: "L" },
-    { id: 1, name: "XL" },
+    { id: 2, name: "M" },
+    { id: 3, name: "L" },
+    { id: 4, name: "XL" },
   ];
 
   const products = [
@@ -117,7 +117,10 @@ const index = () => {
               Categories
             </h1>
             {items.map((product) => (
-              <div className=" text-gray-500 flex justify-between items-center ">
+              <div
+                className=" text-gray-500 flex justify-between items-center "
+                key={product.id}
+              >
                 <div className="flex items-center gap-1">
                   <input type="checkbox" />
                   <span></span> {product.name}
@@ -130,7 +133,10 @@ const index = () => {
           <div>
             <h1 className="uppercase text-gray-600 font-medium mb-3">Brands</h1>
             {brands.map((brand) => (
-              <div className=" text-gray-500 flex justify-between items-center">
+              <div
+                className=" text-gray-500 flex justify-between items-center"
+                key={brand.id}
+              >
                 <div className="flex items-center gap-1">
                   <input type="checkbox" />
                   <span></span> {brand.name}
@@ -165,7 +171,10 @@ const index = () => {
 
             <div className="flex gap-2">
               {sizes.map((s) => (
-                <div className="w-6 h-6 bg-white text-primary hover:bg-primary  hover:text-white border border-gray-400 flex justify-center items-center text-sm p-2 cursor-pointer">
+                <div
+                  key={s.id}
+                  className="w-6 h-6 bg-white text-primary hover:bg-primary  hover:text-white border border-gray-400 flex justify-center items-center text-sm p-2 cursor-pointer"
+                >
                   {s.name}
                 </div>
               ))}
@@ -210,7 +219,10 @@ const index = () => {
           {/* products */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {products.map((product) => (
-              <div className="bg-white shadow rounded overflow-hidden">
+              <div
+                className="bg-white shadow rounded overflow-hidden"
+                key={product.id}
+              >
                 <div className="relative group">
                   <img src={product.img} className="w-full" />
                   <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
