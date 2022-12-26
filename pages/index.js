@@ -1,8 +1,7 @@
-
-import Banner from "./comps/banner/Banner";
-import Categories from "./comps/categories/Categories";
-import Feature from "./comps/feature/Feature";
-import Product from "./comps/products/Product";
+import Banner from "../comps/banner/Banner";
+import Categories from "../comps/categories/Categories";
+import Feature from "../comps/feature/Feature";
+import Product from "../comps/products/Product";
 
 export default function Home() {
   const products = [
@@ -33,7 +32,6 @@ export default function Home() {
   ];
 
   const randomProducts = [
-    
     {
       id: 5,
       name: "Wooden Chair",
@@ -57,8 +55,7 @@ export default function Home() {
       name: "Wooden Bed",
       price: 2000,
       img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
-    }
-
+    },
   ];
   return (
     <div>

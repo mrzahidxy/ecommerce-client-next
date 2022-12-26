@@ -1,6 +1,7 @@
 import Head from "next/head";
+import Layout from "../comps/layout/Layout";
 import "../styles/globals.css";
-import Layout from "./comps/layout/Layout";
+
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {

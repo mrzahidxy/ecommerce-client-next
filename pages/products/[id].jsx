@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 
-import Product from "../comps/products/Product.jsx";
+import Product from "../../comps/products/Product";
 
 const ProductDetails = () => {
   const products = [

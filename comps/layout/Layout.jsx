@@ -1,21 +1,19 @@
-import { Children } from "react"
-import Copyright from "../copyright/Copyright"
-import Footer from "../footer/Footer"
-import Header from "../header/Header"
-import Navbar from "../navbar/Navbar"
 
+import Footer from "../footer/Footer";
+import Header from "../header/Header";
+import Navbar from "../navbar/Navbar";
+import Copyright from "../copyright/Copyright";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <>
-    <Header/>
-    <Navbar/>
-    {children}
-    <Footer/>
-    <Copyright/>
+      <Header />
+      <Navbar />
+      {children}
+      <Footer />
+      <Copyright />
     </>
+  );
+};
 
-  )
-}
-
-export default Layout
+export default Layout;

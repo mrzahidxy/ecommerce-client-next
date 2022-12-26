@@ -9,12 +9,12 @@ const Navbar = () => {
       {/* <div className="container text-white p-3 md:hidden">
         <FontAwesomeIcon className="4xl" icon={faBars} />
       </div> */}
-      <div className="container flex ">
+      <div className="container flex flex-col sm:flex-row md:flex-row">
         <div className="bg-primary text-white text-sm md:text-base py-4 px-2 flex gap-2 items-center cursor-pointer transition">
           <FontAwesomeIcon icon={faBars} />
           <span className="tetx-sm md:text-base">All Categories</span>
         </div>
-        <div className="flex items-center justify-between flex-grow pl-3 md:pl-10 ">
+        <div className="flex items-center justify-between flex-grow pl-3 md:pl-10 p-5">
           <div className="flex items-center space-x-6 capitalize ">
             <Link
               href="/"
