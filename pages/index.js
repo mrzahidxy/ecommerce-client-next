@@ -1,9 +1,9 @@
 import Banner from "../comps/banner/Banner";
 import Categories from "../comps/categories/Categories";
 import Feature from "../comps/feature/Feature";
-import Product from "../comps/products/Product";
+import Products from "../comps/products/Products";
 
-export default function Home({ products}) {
+export default function Home({ products }) {
   // const products = [
   //   {
   //     id: 1,
@@ -64,9 +64,9 @@ export default function Home({ products}) {
       <main>
         <Banner />
         <Feature />
-        <Categories  />
-        <Product products={products.slice(0,4)} title="New Arrivals" />
-        <Product products={products.slice(-4)} title="Random" />
+        <Categories />
+        <Products products={products.slice(0, 3)} title="New Arrivals" />
+        <Products products={products.slice(-3)} title="Random" />
       </main>
     </div>
   );

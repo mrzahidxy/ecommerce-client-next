@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 
-import Product from "../../comps/products/Product";
+import Products from "../../comps/products/Products";
 
 const ProductDetails = ({ product }) => {
   console.log("product", product);
@@ -74,7 +74,6 @@ const ProductDetails = ({ product }) => {
               className="border cursor-pointer hover:border-primary"
               src={product.img}
             />
-
           </div>
         </div>
 
@@ -164,7 +163,7 @@ const ProductDetails = ({ product }) => {
       </div>
       {/* ProductDetails */}
 
-      <Product products={products} title="Similar Products" />
+      {/* <Products products={products} title="Similar Products" /> */}
     </div>
   );
 };
