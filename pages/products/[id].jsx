@@ -9,7 +9,8 @@ import Link from "next/link";
 
 import Product from "../../comps/products/Product";
 
-const ProductDetails = () => {
+const ProductDetails = ({ product }) => {
+  console.log("product", product);
   const products = [
     {
       id: 1,
@@ -58,31 +59,30 @@ const ProductDetails = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 mb-4 gap-4">
         {/* image */}
         <div className="flex flex-col gap-4">
-          <img src="https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938" />
+          <img src={product.img} />
 
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-3 gap-4">
             <img
               className="border cursor-pointer hover:border-primary"
-              src="https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938"
+              src={product.img}
             />
             <img
               className="border cursor-pointer hover:border-primary"
-              src="https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938"
+              src={product.img}
             />
             <img
               className="border cursor-pointer hover:border-primary"
-              src="https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938"
+              src={product.img}
             />
-            <img
-              className="border cursor-pointer hover:border-primary"
-              src="https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938"
-            />
+
           </div>
         </div>
 
         {/* Summary */}
         <div className="space-y-4">
-          <h1 className="text-2xl text-gray-700 font-medium">Wooden Chair</h1>
+          <h1 className="text-2xl text-gray-700 font-medium">
+            {product.title}
+          </h1>
           <div className="text-yellow-300 space-x-1">
             <FontAwesomeIcon className="" icon={faStar} />
             <FontAwesomeIcon className="" icon={faStar} />
@@ -94,50 +94,48 @@ const ProductDetails = () => {
             <span className="text-l text-gray-800 font-medium">
               Availability:
             </span>
-            <span className="font-medium text-green-600">In Stock</span>
+            <span className="font-medium text-green-600">
+              {product.inStock ? "In Sctok" : "Out of Stock"}
+            </span>
           </div>
           <div className="space-x-2">
             <span className="text-l text-gray-800 font-medium">Brand:</span>
-            <span className="font-medium text-green-600">Otobi</span>
+            <span className="font-medium text-green-600">N/A</span>
           </div>
           <div className="space-x-2">
             <span className="text-l text-gray-800 font-medium">Category:</span>
-            <span className="font-medium text-green-600">Wooden</span>
+            <span className="font-medium text-green-600 capitalize">
+              {product?.categries?.map((cat) => (
+                <span>{cat} , </span>
+              ))}
+            </span>
           </div>
           <div className="space-x-2">
-            <span className="text-primary font-bold">2500 Tk</span>
+            <span className="text-primary font-bold">{product.price}</span>
             <span className="text-gray-500 font-medium text-sm line-through">
               2000 Tk
             </span>
           </div>
-          <p className="text-gray-600">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id optio
-            molestias laboriosam eos nesciunt eum temporibus omnis quibusdam
-            dolores reiciendis.
-          </p>
+          <p className="text-gray-600">{product.desc}</p>
           <div>
             <span className="text-gray-600 font-medium">Size</span>
             <div className="flex gap-2">
-              <div className=" text-sm bg-white text-gray-600 font-medium border border-gray-600 w-6 h-6 flex justify-center items-center hover:bg-primary hover:text-white">
-                S
-              </div>
-              <span className=" text-sm bg-white text-gray-600 font-medium border border-gray-600 w-6 h-6 flex justify-center items-center hover:bg-primary hover:text-white">
-                M
-              </span>
-              <span className="text-sm bg-white text-gray-600 font-medium border border-gray-600 w-6 h-6 flex justify-center items-center hover:bg-primary hover:text-white">
-                L
-              </span>
-              <span className="text-sm bg-white text-gray-600 font-medium border border-gray-600 w-6 h-6 flex justify-center items-center hover:bg-primary hover:text-white">
-                XL
-              </span>
+              {product.size.map((s) => (
+                <div className=" text-sm bg-white text-gray-600 font-medium border border-gray-600 w-6 h-6 flex justify-center items-center hover:bg-primary hover:text-white">
+                  {s}
+                </div>
+              ))}
             </div>
           </div>
           <div>
             <span className="text-gray-600 font-medium">Color</span>
             <div className="flex gap-2">
-              <div className="w-6 h-6 bg-green-800 cursor-pointer"></div>
-              <div className="w-6 h-6 bg-primary cursor-pointer"></div>
-              <div className="w-6 h-6 bg-blue-600 cursor-pointer"></div>
+              {product.color.map((c) => (
+                <div
+                  className="w-6 h-6 bg-green-800 cursor-pointer"
+                  style={{ backgroundColor: c }}
+                ></div>
+              ))}
             </div>
           </div>
           <div>
@@ -170,5 +168,28 @@ const ProductDetails = () => {
     </div>
   );
 };
+
+export async function getStaticPaths() {
+  const res = await fetch("https://ecommerce-mern-api.vercel.app/api/products");
+  const products = await res.json();
+
+  const paths = products.map((product) => ({
+    params: { id: product._id },
+  }));
+
+  return { paths, fallback: false };
+}
+export async function getStaticProps({ params }) {
+  const res = await fetch(
+    `https://ecommerce-mern-api.vercel.app/api/products/${params.id}`
+  );
+  const product = await res.json();
+
+  return {
+    props: {
+      product,
+    },
+  };
+}
 
 export default ProductDetails;

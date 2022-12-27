@@ -12,7 +12,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
 
-const index = () => {
+const index = ({products}) => {
+
+
   const items = [
     { id: 1, name: "Chair", quantity: 10 },
     { id: 2, name: "Sofa", quantity: 12 },
@@ -33,62 +35,62 @@ const index = () => {
     { id: 4, name: "XL" },
   ];
 
-  const products = [
-    {
-      id: 1,
-      name: "Wooden Chair",
-      price: 2000,
-      img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
-    },
-    {
-      id: 2,
-      name: "Steel Chair",
-      price: 2000,
-      img: "https://img.zcdn.com.au/lf/50/hash/38454/19055758/4/Etienne+Velvet+Dining+Chairs.jpg",
-    },
-    {
-      id: 3,
-      name: "Wooden Bed",
-      price: 2000,
-      img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
-    },
-    {
-      id: 4,
-      name: "Wooden Chair",
-      price: 2000,
-      img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
-    },
-    {
-      id: 5,
-      name: "Wooden Chair",
-      price: 2000,
-      img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
-    },
-    {
-      id: 6,
-      name: "Steel Chair",
-      price: 2000,
-      img: "https://img.zcdn.com.au/lf/50/hash/38454/19055758/4/Etienne+Velvet+Dining+Chairs.jpg",
-    },
-    {
-      id: 7,
-      name: "Wooden Bed",
-      price: 2000,
-      img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
-    },
-    {
-      id: 8,
-      name: "Wooden Bed",
-      price: 2000,
-      img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
-    },
-    {
-      id: 9,
-      name: "Steel Chair",
-      price: 2000,
-      img: "https://img.zcdn.com.au/lf/50/hash/38454/19055758/4/Etienne+Velvet+Dining+Chairs.jpg",
-    },
-  ];
+  // const products = [
+  //   {
+  //     id: 1,
+  //     name: "Wooden Chair",
+  //     price: 2000,
+  //     img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Steel Chair",
+  //     price: 2000,
+  //     img: "https://img.zcdn.com.au/lf/50/hash/38454/19055758/4/Etienne+Velvet+Dining+Chairs.jpg",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Wooden Bed",
+  //     price: 2000,
+  //     img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Wooden Chair",
+  //     price: 2000,
+  //     img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Wooden Chair",
+  //     price: 2000,
+  //     img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Steel Chair",
+  //     price: 2000,
+  //     img: "https://img.zcdn.com.au/lf/50/hash/38454/19055758/4/Etienne+Velvet+Dining+Chairs.jpg",
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "Wooden Bed",
+  //     price: 2000,
+  //     img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Wooden Bed",
+  //     price: 2000,
+  //     img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
+  //   },
+  //   {
+  //     id: 9,
+  //     name: "Steel Chair",
+  //     price: 2000,
+  //     img: "https://img.zcdn.com.au/lf/50/hash/38454/19055758/4/Etienne+Velvet+Dining+Chairs.jpg",
+  //   },
+  // ];
   return (
     <div className="container">
       <div className="w-full flex items-center gap-2 pt-3">
@@ -221,13 +223,13 @@ const index = () => {
             {products.map((product) => (
               <div
                 className="bg-white shadow rounded overflow-hidden"
-                key={product.id}
+                key={product._id}
               >
                 <div className="relative group">
                   <img src={product.img} className="w-full" />
                   <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
                     <Link
-                      href={`products/${product.id}`}
+                      href={`products/${product._id}`}
                       className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition"
                     >
                       <FontAwesomeIcon
@@ -245,7 +247,7 @@ const index = () => {
                 </div>
                 <div className="p-5">
                   <h1 className="text-lg text-grey-800 hover:text-primary transition">
-                    {product.name}
+                    {product.title}
                   </h1>
                   <div className="flex items-baseline space-x-4">
                     <p className="text-xl text-primary font-medium">
@@ -279,5 +281,15 @@ const index = () => {
     </div>
   );
 };
+
+export async function getStaticProps () {
+  const res = await fetch("https://ecommerce-mern-api.vercel.app/api/products");
+  let products = await res.json()
+  return{
+    props: {
+      products
+    }
+  }
+}
 
 export default index;

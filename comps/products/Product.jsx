@@ -16,12 +16,12 @@ const Product = ({ products, title }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {products?.map((product) => (
-          <div className="bg-white shadow rounded overflow-hidden" key={product.id}>
+          <div className="bg-white shadow rounded overflow-hidden" key={product._id}>
             <div className="relative group">
               <img src={product.img} className="w-full" />
               <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
                 <Link
-                  href={`/products/${product.id}`}
+                  href={`/products/${product._id}`}
                   className=" text-lg w-8 h-8 rounded-full bg-primary group-hover:bg-white flex justify-center items-center transition"
                 >
                   <FontAwesomeIcon
@@ -39,7 +39,7 @@ const Product = ({ products, title }) => {
             </div>
             <div className="p-5">
               <h1 className="text-lg text-grey-800 hover:text-primary transition">
-                {product.name}
+                {product.title}
               </h1>
               <div className="flex items-baseline space-x-4">
                 <p className="text-xl text-primary font-medium">
