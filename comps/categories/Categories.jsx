@@ -12,7 +12,7 @@ const Categories = () => {
 
   return (
     <div className="container py-8">
-      <h1 className="text-2xl text-gray-800 font-medium mb-5 uppercase">
+      <h1 className="text-2xl text-gray-800 font-medium mb-5 uppercase dark:text-white">
         Shop By Category
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-10">

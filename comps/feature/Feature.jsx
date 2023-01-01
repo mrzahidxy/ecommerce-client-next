@@ -17,21 +17,21 @@ const Feature = () => {
             <FontAwesomeIcon icon={faTruck} />
           </div>
           <div>
-            <h3 className="text-xl text-gray-800 font-medium capitalize">
+            <h3 className="text-xl text-gray-800 font-medium capitalize dark:text-white">
               Free Shipping
             </h3>
-            <p className="text-sm text-gray-500 font-medium capitalize">
+            <p className="text-sm text-gray-500 font-medium capitalize dark:text-white">
               Oreder over 200TK
             </p>
           </div>
         </div>
         <div className="border border-primary rounded py-5 flex items-center gap-4 justify-center">
-          <div className="text-4xl text-primary">
+          <div className="text-4xl text-primary ">
             <FontAwesomeIcon icon={faMoneyBillTransfer} />
           </div>
           <div>
-            <h3 className="text-xl text-gray-800  font-medium">Money Return</h3>
-            <p className="text-sm text-gray-500 font-medium capitalize">
+            <h3 className="text-xl text-gray-800  font-medium dark:text-white">Money Return</h3>
+            <p className="text-sm text-gray-500 font-medium capitalize dark:text-white">
               30 days money return
             </p>
           </div>
@@ -41,8 +41,8 @@ const Feature = () => {
             <FontAwesomeIcon icon={faClockRotateLeft} />
           </div>
           <div>
-            <h3 className="text-xl text-gray-800 font-medium">24*7 Support</h3>
-            <p className="text-sm text-gray-500 font-medium capitalize">
+            <h3 className="text-xl text-gray-800 font-medium dark:text-white">24*7 Support</h3>
+            <p className="text-sm text-gray-500 font-medium capitalize dark:text-white">
               Customer Support
             </p>
           </div>

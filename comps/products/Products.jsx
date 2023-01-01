@@ -6,18 +6,18 @@ import React from "react";
 const Products = ({ products, title }) => {
   return (
     <div className="container py-8">
-      <h1 className="text-2xl text-gray-800 uppercase font-medium mb-5">
+      <h1 className="text-2xl text-gray-800 uppercase font-medium mb-5 dark:text-white">
         {title}
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {products?.map((product) => (
           <div
-            className="bg-white shadow rounded overflow-hidden"
+            className="bg-white shadow rounded overflow-hidden dark:bg-gray-400"
             key={product._id}
           >
             <div className="relative group">
-              <img src={product.img} className="w-60 h-60" />
+              <img src={product.img} className="w-full" />
               <div className="absolute inset-0 flex gap-2 justify-center items-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition">
                 <Link
                   href={`/products/${product._id}`}
@@ -41,7 +41,7 @@ const Products = ({ products, title }) => {
                 {product.title}
               </h1>
               <div className="flex items-baseline space-x-4">
-                <p className="text-xl text-primary font-medium">
+                <p className="text-xl text-primary font-medium dark:text-white">
                   {product.price} Tk
                 </p>
                 <p className="text-sm text-gray-400 font-medium line-through">
@@ -56,7 +56,7 @@ const Products = ({ products, title }) => {
                   <FontAwesomeIcon icon={faStar} />
                   <FontAwesomeIcon icon={faStar} />
                 </div>
-                <div className="text-sm text-grey-400">(150)</div>
+                <div className="text-sm text-grey-400 dark:text-white">(150)</div>
               </div>
             </div>
 

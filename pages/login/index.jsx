@@ -20,7 +20,7 @@ const index = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        router.push('/')
+        router.push("/");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -34,7 +34,13 @@ const index = () => {
         className="bg-primary p-10 rounded-sm text-white flex flex-col"
       >
         <label htmlFor="user">First Name</label>
-        <input type="text" id="user" name="user" required className="border" />
+        <input
+          type="text"
+          id="user"
+          name="user"
+          required
+          className="border text-black"
+        />
 
         <label htmlFor="password">Last Name</label>
         <input
@@ -42,7 +48,7 @@ const index = () => {
           id="pass"
           name="password"
           required
-          className="border"
+          className="border text-black"
         />
 
         <button

@@ -4,54 +4,27 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import Link from "next/link";
 
-import Products from "../../comps/products/Products";
 
 const ProductDetails = ({ product }) => {
-  console.log("product", product);
-  const products = [
-    {
-      id: 1,
-      name: "Wooden Chair",
-      price: 2000,
-      img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
-    },
-    {
-      id: 2,
-      name: "Steel Chair",
-      price: 2000,
-      img: "https://img.zcdn.com.au/lf/50/hash/38454/19055758/4/Etienne+Velvet+Dining+Chairs.jpg",
-    },
-    {
-      id: 3,
-      name: "Wooden Bed",
-      price: 2000,
-      img: "https://d3home.com/wp-content/uploads/2019/04/b3e3568a-d0b5-44b0-922d-0d18e7b0c67e.jpg",
-    },
-    {
-      id: 4,
-      name: "Wooden Chair",
-      price: 2000,
-      img: "https://target.scene7.com/is/image/Target/Chairs_QUIVER-210420-1618938782938",
-    },
-  ];
+  // console.log("product", product);
+
 
   return (
-    <div className="container">
-      <div className="w-full flex items-center gap-2 py-3">
+    <div className="container dark:bg-gray-800">
+      <div className="w-full flex items-center gap-2 py-3 ">
         <Link href="/" className="">
           <FontAwesomeIcon className="text-primary text-xl" icon={faHome} />
         </Link>
         <span>
           <FontAwesomeIcon className="text-gray-500" icon={faChevronRight} />
         </span>
-        <span className="text-gray-600 font-medium">Products</span>
+        <span className="text-gray-600 font-medium dark:text-white">Products</span>
         <span>
-          <FontAwesomeIcon className="text-gray-500" icon={faChevronRight} />
+          <FontAwesomeIcon className="text-gray-500 dark:text-white" icon={faChevronRight} />
         </span>
-        <span className="text-gray-600 font-medium">Chair</span>
+        <span className="text-gray-600 font-medium dark:text-white">Chair</span>
       </div>
 
       {/* ProductDetails */}
@@ -79,7 +52,7 @@ const ProductDetails = ({ product }) => {
 
         {/* Summary */}
         <div className="space-y-4">
-          <h1 className="text-2xl text-gray-700 font-medium">
+          <h1 className="text-2xl text-gray-700 font-medium dark:text-white">
             {product.title}
           </h1>
           <div className="text-yellow-300 space-x-1">
@@ -87,22 +60,22 @@ const ProductDetails = ({ product }) => {
             <FontAwesomeIcon className="" icon={faStar} />
             <FontAwesomeIcon className="" icon={faStar} />
             <FontAwesomeIcon className="" icon={faStar} />
-            <span className="text-gray-500">(150 reviews)</span>
+            <span className="text-gray-500 dark:text-white">(150 reviews)</span>
           </div>
           <div className="space-x-2">
-            <span className="text-l text-gray-800 font-medium">
+            <span className="text-l text-gray-800 font-medium dark:text-white">
               Availability:
             </span>
-            <span className="font-medium text-green-600">
+            <span className="font-medium text-green-600 dark:text-white">
               {product.inStock ? "In Sctok" : "Out of Stock"}
             </span>
           </div>
           <div className="space-x-2">
-            <span className="text-l text-gray-800 font-medium">Brand:</span>
-            <span className="font-medium text-green-600">N/A</span>
+            <span className="text-l text-gray-800 font-medium dark:text-white">Brand:</span>
+            <span className="font-medium text-green-600 dark:text-white">N/A</span>
           </div>
           <div className="space-x-2">
-            <span className="text-l text-gray-800 font-medium">Category:</span>
+            <span className="text-l text-gray-800 font-medium dark:text-white">Category:</span>
             <span className="font-medium text-green-600 capitalize">
               {product?.categries?.map((cat) => (
                 <span>{cat} , </span>
@@ -111,13 +84,13 @@ const ProductDetails = ({ product }) => {
           </div>
           <div className="space-x-2">
             <span className="text-primary font-bold">{product.price}</span>
-            <span className="text-gray-500 font-medium text-sm line-through">
+            <span className="text-gray-500 font-medium text-sm line-through dark:text-white">
               2000 Tk
             </span>
           </div>
-          <p className="text-gray-600">{product.desc}</p>
+          <p className="text-gray-600 dark:text-white">{product.desc}</p>
           <div>
-            <span className="text-gray-600 font-medium">Size</span>
+            <span className="text-gray-600 font-medium dark:text-white">Size</span>
             <div className="flex gap-2">
               {product.size.map((s) => (
                 <div className=" text-sm bg-white text-gray-600 font-medium border border-gray-600 w-6 h-6 flex justify-center items-center hover:bg-primary hover:text-white">
@@ -127,7 +100,7 @@ const ProductDetails = ({ product }) => {
             </div>
           </div>
           <div>
-            <span className="text-gray-600 font-medium">Color</span>
+            <span className="text-gray-600 font-medium dark:text-white">Color</span>
             <div className="flex gap-2">
               {product.color.map((c) => (
                 <div
@@ -138,15 +111,15 @@ const ProductDetails = ({ product }) => {
             </div>
           </div>
           <div>
-            <span className="text-gray-600 font-medium">Quantity</span>
+            <span className="text-gray-600 font-medium dark:text-white">Quantity</span>
             <div className="flex ">
-              <div className="w-6 h-6 border border-collapse border-gray-400 flex justify-center items-center">
+              <div className="w-6 h-6 border border-collapse border-gray-400 flex justify-center items-center dark:text-white">
                 +
               </div>
-              <div className="w-6 h-6 border  border-collapse border-gray-400 flex justify-center items-center">
+              <div className="w-6 h-6 border  border-collapse border-gray-400 flex justify-center items-center dark:text-white">
                 4
               </div>
-              <div className="w-6 h-6 border border-collapse border-gray-400 flex justify-center items-center">
+              <div className="w-6 h-6 border border-collapse border-gray-400 flex justify-center items-center dark:text-white">
                 -
               </div>
             </div>

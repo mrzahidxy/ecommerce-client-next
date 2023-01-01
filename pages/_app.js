@@ -1,11 +1,16 @@
 import Head from "next/head";
 import Layout from "../comps/layout/Layout";
 import "../styles/globals.css";
-
+import "antd/dist/reset.css";
+import AdminLayout from "../comps/layout/AdminLAyout";
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
-    return Component.getLayout(<Component {...pageProps} />);
+    return Component.getLayout(
+      
+        <Component {...pageProps} />
+    
+    );
   }
 
   return (

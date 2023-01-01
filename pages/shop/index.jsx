@@ -77,9 +77,9 @@ const index = () => {
           <FontAwesomeIcon className="text-primary text-xl" icon={faHome} />
         </Link>
         <span>
-          <FontAwesomeIcon className="text-gray-500" icon={faChevronRight} />
+          <FontAwesomeIcon className="text-gray-500 dark:text-white" icon={faChevronRight} />
         </span>
-        <span className="text-gray-600 font-medium">Shop</span>
+        <span className="text-gray-600 font-medium dark:text-white">Shop</span>
       </div>
 
       <div className="grid grid-cols-3 md:grid-cols-4 py-10">
@@ -87,7 +87,7 @@ const index = () => {
 
         <div className="hidden md:block border-x-2 border-b-2 p-5 rounded-sm">
           <div>
-            <h1 className="uppercase text-gray-600 font-medium mb-3">
+            <h1 className="uppercase text-gray-600 font-medium mb-3 dark:text-white">
               Categories
             </h1>
             {categories.map((category) => (
@@ -101,7 +101,7 @@ const index = () => {
                     value={category.name}
                     onChange={(e) => checkedHandle(e)}
                   />
-                  <span>{category.name}</span>
+                  <span className="dark:text-white">{category.name}</span>
                 </div>
                 {/* <div>({product.quantity})</div> */}
               </div>
@@ -126,7 +126,7 @@ const index = () => {
           <hr className="text-gray-700 my-3" /> */}
 
           <div>
-            <h1 className="uppercase text-gray-600 font-medium mb-3">Prices</h1>
+            <h1 className="uppercase text-gray-600 font-medium mb-3 dark:text-white">Prices</h1>
             <div className="grid grid-cols-5 auto-cols-auto">
               <input
                 type="text"
@@ -144,7 +144,7 @@ const index = () => {
           <hr className="text-gray-700 my-3" />
 
           <div>
-            <h1 className="uppercase text-gray-600 font-medium mb-3">Sizes</h1>
+            <h1 className="uppercase text-gray-600 font-medium mb-3 dark:text-white">Sizes</h1>
 
             <div className="flex gap-2">
               {sizes.map((s) => (
@@ -152,7 +152,7 @@ const index = () => {
                   key={s.id}
                   value={s.name}
                   name="size"
-                  className="w-6 h-6 bg-white text-primary hover:bg-primary  hover:text-white border border-gray-400 flex justify-center items-center text-sm p-2 cursor-pointer"
+                  className="w-6 h-6 bg-white text-primary hover:bg-primary  hover:text-white border border-gray-400 flex justify-center items-center text-sm p-2 cursor-pointer dark:text-white"
                   onClick={(e) => filterHandle(e)}
                 >
                   {s.name}
@@ -162,7 +162,7 @@ const index = () => {
           </div>
 
           <div>
-            <h1 className="uppercase text-gray-600 font-medium mb-3">colors</h1>
+            <h1 className="uppercase text-gray-600 font-medium mb-3 dark:text-white">colors</h1>
             <div className="flex gap-2">
               <div
                 className="w-5 h-5 bg-black cursor-pointer"
