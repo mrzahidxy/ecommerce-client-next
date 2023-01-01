@@ -1,24 +1,24 @@
 import React from "react";
-import { Table } from "antd";
+import AdminLayout from "../../../comps/layout/AdminLAyout";
 import useSWR from "swr";
 import axios from "axios";
-import AdminLayout from "../../../comps/layout/AdminLAyout";
+import { Table } from "antd";
 
 const columns = [
   {
-    title: "Title",
-    dataIndex: "title",
-    key: "title",
+    title: "User",
+    dataIndex: "username",
+    key: "username",
   },
   {
-    title: "Description",
-    dataIndex: "desc",
-    key: "desc",
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price",
+    title: "Role",
+    dataIndex: "isAdmin",
+    key: "isAdmin",
   },
 ];
 
@@ -33,20 +33,20 @@ const fetcher = (url) =>
     })
     .then((res) => res.data);
 
-const product = () => {
+const User = () => {
   const { data, error } = useSWR(
-    ["https://ecommerce-mern-api.vercel.app/api/products/"],
+    ["https://ecommerce-mern-api.vercel.app/api/users/"],
     fetcher
   );
-  const products = data;
+  const users = data;
 
   console.log(data);
 
-  return <Table columns={columns} dataSource={products} />;
+  return <Table columns={columns} dataSource={users} />;
 };
 
-product.getLayout = function PageLayout(page) {
+User.getLayout = function PageLayout(page) {
   return <AdminLayout>{page}</AdminLayout>;
 };
 
-export default product;
+export default User;

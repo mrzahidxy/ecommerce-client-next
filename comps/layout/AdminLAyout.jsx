@@ -20,8 +20,11 @@ const items = [
   getItem(<Link href="/admin">Dashboard</Link>, "1", <PieChartOutlined />),
   getItem(<Link href="/admin/user">User</Link>, "2", <UserOutlined />),
   getItem(<Link href="/admin/product">Product</Link>, "3", <ShopOutlined />),
-  getItem(<Link href="/admin/order">Order</Link>, "4", <ShoppingCartOutlined />),
-
+  getItem(
+    <Link href="/admin/order">Order</Link>,
+    "4",
+    <ShoppingCartOutlined />
+  ),
 ];
 const AdminLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -95,6 +98,5 @@ const AdminLayout = ({ children }) => {
     </Layout>
   );
 };
-
 
 export default AdminLayout;
