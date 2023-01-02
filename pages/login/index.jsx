@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const index = () => {
@@ -5,26 +6,41 @@ const index = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
+    // const data = {
+    //   username: e.target.user.value,
+    //   password: e.target.pass.value,
+    // };
+
+    // console.log(data);
+
+    const status = await signIn("credentials", {
+      redirect: false,
       username: e.target.user.value,
       password: e.target.pass.value,
-    };
+      callbackUrl: "/",
+    });
 
-    fetch("https://ecommerce-mern-api.vercel.app/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        router.push("/");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    console.log(status);
+
+    if (status.ok) {
+      router.push(status.url);
+    }
+
+    // fetch("https://ecommerce-mern-api.vercel.app/api/auth/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Success:", data);
+    //     router.push("/");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   };
 
   return (
@@ -33,7 +49,7 @@ const index = () => {
         onSubmit={handleSubmit}
         className="bg-primary p-10 rounded-sm text-white flex flex-col"
       >
-        <label htmlFor="user">First Name</label>
+        <label htmlFor="user">Username</label>
         <input
           type="text"
           id="user"
@@ -42,7 +58,7 @@ const index = () => {
           className="border text-black"
         />
 
-        <label htmlFor="password">Last Name</label>
+        <label htmlFor="password">Password</label>
         <input
           type="text"
           id="pass"

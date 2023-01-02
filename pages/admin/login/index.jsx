@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const index = () => {
@@ -10,21 +11,28 @@ const index = () => {
       password: e.target.pass.value,
     };
 
-    fetch("https://ecommerce-mern-api.vercel.app/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        router.push("/");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    await signIn("credentials", {
+      redirect: false,
+      username: e.target.user.value,
+      password: e.target.pass.value,
+      callbackUrl: "/",
+    });
+
+    // fetch("https://ecommerce-mern-api.vercel.app/api/auth/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Success:", data);
+    //     router.push("/");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   };
 
   return (

@@ -4,7 +4,6 @@ import Feature from "../comps/feature/Feature";
 import Products from "../comps/products/Products";
 
 export default function Home({ products }) {
-
   return (
     <div>
       <main>

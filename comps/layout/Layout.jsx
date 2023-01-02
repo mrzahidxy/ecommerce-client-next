@@ -7,8 +7,6 @@ import { useState } from "react";
 const Layout = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
 
-  console.log(isDark);
-
   return (
     <div className={`${isDark && "dark "}`}>
       <div className="dark:bg-gray-800">
