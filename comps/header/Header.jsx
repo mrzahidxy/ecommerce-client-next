@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   faArrowRightFromBracket,
   faBagShopping,
@@ -10,15 +10,9 @@ import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
-  const { data: session, status } = useSession();
-  console.log("session data", session, status);
+  const { data, status } = useSession();
+  console.log("session data", data);
 
-  const router = useRouter();
-
-  const logoutHandle = (e) => {
-    e.preventDefault();
-    signOut();
-  };
   return (
     <div className="py-3 shadow-sm bg-white dark:bg-gray-800">
       <div className="container flex flex-col items-center gap-3 md:flex-row md:justify-between ">
@@ -57,7 +51,7 @@ const Header = () => {
             <Link
               href="#"
               className="flex flex-col items-center text-gray-800 hover:text-primary relative dark:text-white"
-              onClick={logoutHandle}
+              onClick={() => signOut()}
             >
               <div className="text-2xl">
                 <FontAwesomeIcon icon={faArrowRightFromBracket} />

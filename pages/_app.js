@@ -14,27 +14,27 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   }
 
   //dark mode function
-  const darkMode = () => {
-    typeof window !== "undefined" && localStorage.setItem("mode", "dark");
-    setRender(!render);
-  };
-  const lightMode = () => {
-    typeof window !== "undefined" && localStorage.setItem("mode", "");
-    setRender(!render);
-  };
+  // const darkMode = () => {
+  //   typeof window !== "undefined" && localStorage.setItem("mode", "dark");
+  //   setRender(!render);
+  // };
+  // const lightMode = () => {
+  //   typeof window !== "undefined" && localStorage.setItem("mode", "");
+  //   setRender(!render);
+  // };
 
-  useEffect(() => {
-    setDark(localStorage.getItem("mode"));
-  }, [render]);
+  // useEffect(() => {
+  //   setDark(localStorage.getItem("mode"));
+  // }, [render]);
 
   return (
     <div className={`${dark}`}>
       <div className="w-full space-x-2 dark:bg-gray-800 ">
-        <button onClick={darkMode} className="dark:text-white p-1">
+        <button onClick={()=>setDark("dark")} className="dark:text-white p-1">
           On
         </button>
         <button
-          onClick={lightMode}
+          onClick={()=>setDark('')}
           className="bg-black text-white dark:bg-white dark:text-black p-1"
         >
           Off
