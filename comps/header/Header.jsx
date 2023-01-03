@@ -10,9 +10,9 @@ import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
-  const session = useSession();
+  const { data: session, status } = useSession();
+  console.log("session data", session, status);
 
-  console.log("session status", session);
   const router = useRouter();
 
   const logoutHandle = (e) => {
@@ -53,7 +53,7 @@ const Header = () => {
               3
             </span>
           </Link>
-          {session.status === "authenticated" ? (
+          {status === "authenticated" ? (
             <Link
               href="#"
               className="flex flex-col items-center text-gray-800 hover:text-primary relative dark:text-white"

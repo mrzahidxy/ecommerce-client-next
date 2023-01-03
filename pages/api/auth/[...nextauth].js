@@ -15,7 +15,7 @@ export const authOptions = {
         );
 
         if (user) {
-          return user;
+          return user.data;
         } else {
           return null;
         }
