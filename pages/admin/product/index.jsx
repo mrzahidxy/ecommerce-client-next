@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Table } from "antd";
 import AdminLayout from "../../../comps/layout/AdminLAyout";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useFetcher } from "../../../customhooks/useFetcher";
 
@@ -101,13 +101,12 @@ const product = () => {
   const session = useSession();
   const router = useRouter();
 
-  console.log("admin", session?.data?.isAdmin);
-  useEffect(() => {
-    if (session?.data?.isAdmin !== true) {
-      router.push("/admin/login");
-    }
-  }, []);
+  const Handler = async (req, res) => {
+    const session = await getSession({ req });
+    session?.isAdmin !== true ? router.push("/admin/login") : "";
+  };
 
+  Handler();
   const { data, isError, isLoading } = useFetcher([
     "products",
     session.data?.accessToken,

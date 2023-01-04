@@ -1,5 +1,5 @@
 import { Table } from "antd";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import AdminLayout from "../../../comps/layout/AdminLAyout";
@@ -37,13 +37,12 @@ const order = () => {
   const session = useSession();
   const router = useRouter();
 
-  // console.log("token in order", session.data?.accessToken);
+  const Handler = async (req, res) => {
+    const session = await getSession({ req });
+    session?.isAdmin !== true ? router.push("/admin/login") : "";
+  };
 
-  useEffect(() => {
-    if (session?.data?.isAdmin !== true) {
-      router.push("/admin/login");
-    }
-  }, []);
+  Handler();
 
   const { data, isError, isLoading } = useFetcher([
     "orders",
