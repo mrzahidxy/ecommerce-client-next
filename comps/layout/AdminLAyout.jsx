@@ -35,19 +35,13 @@ const AdminLayout = ({ children }) => {
       <ShoppingCartOutlined />
     ),
     getItem(
-      <Link href="/admin/login" onClick={() => signOut()}>
+      <Link href="#" onClick={() => signOut({ callbackUrl: "/admin/login" })}>
         Logout
       </Link>,
       "5",
       <ShoppingCartOutlined />
     ),
   ];
-
-  // function logoutHandler(e) {
-  //   e.preventDefault();
-  //   signOut();
-  //   router.push("/admin/");
-  // }
 
   return (
     <Layout
