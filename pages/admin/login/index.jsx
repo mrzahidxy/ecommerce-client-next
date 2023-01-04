@@ -3,36 +3,20 @@ import { useRouter } from "next/router";
 
 const index = () => {
   const router = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      username: e.target.user.value,
-      password: e.target.pass.value,
-    };
-
-    await signIn("credentials", {
+    const status = await signIn("credentials", {
       redirect: false,
       username: e.target.user.value,
       password: e.target.pass.value,
-      callbackUrl: "/",
+      callbackUrl: "/admin",
     });
 
-    // fetch("https://ecommerce-mern-api.vercel.app/api/auth/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //     router.push("/");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+    if (status.ok) {
+      router.push(status.url);
+    }
   };
 
   return (

@@ -10,7 +10,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [render, setRender] = useState(false);
 
   if (Component.getLayout) {
-    return Component.getLayout(<Component {...pageProps} />);
+    return Component.getLayout(
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    );
   }
 
   //dark mode function
@@ -30,11 +34,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <div className={`${dark}`}>
       <div className="w-full space-x-2 dark:bg-gray-800 ">
-        <button onClick={()=>setDark("dark")} className="dark:text-white p-1">
+        <button onClick={() => setDark("dark")} className="dark:text-white p-1">
           On
         </button>
         <button
-          onClick={()=>setDark('')}
+          onClick={() => setDark("")}
           className="bg-black text-white dark:bg-white dark:text-black p-1"
         >
           Off

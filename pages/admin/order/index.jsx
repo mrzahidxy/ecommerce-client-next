@@ -1,8 +1,9 @@
 import { Table } from "antd";
-import axios from "axios";
-import React from "react";
-import useSWR from "swr";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import AdminLayout from "../../../comps/layout/AdminLAyout";
+import { useFetcher } from "../../../customhooks/useFetcher";
 
 const columns = [
   {
@@ -32,23 +33,26 @@ const columns = [
   },
 ];
 
-const fetcher = (url) =>
-  axios
-    .get(url, {
-      headers: {
-        token:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDQyNmNmMzIzZmQxNTc0NzM5OGY1NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjU3Mzg0MCwiZXhwIjoxNjcyODMzMDQwfQ.epPBc3f1VcrAI1HvatKlMS8QMjgjSVmIJi63m4nTHiw",
-      },
-    })
-    .then((res) => res.data);
-
 const order = () => {
-  const { data, error } = useSWR(
-    ["https://ecommerce-mern-api.vercel.app/api/orders/"],
-    fetcher
-  );
+  const session = useSession();
+  const router = useRouter();
+
+  // console.log("token in order", session.data?.accessToken);
+
+  useEffect(() => {
+    if (session?.data?.isAdmin !== true) {
+      router.push("/admin/login");
+    }
+  }, []);
+
+  const { data, isError, isLoading } = useFetcher([
+    "orders",
+    session.data?.accessToken,
+  ]);
   const orders = data;
+  orders?.forEach(function (element) {
+    element.key = Math.random();
+  });
 
   // console.log(orders);
 
@@ -68,7 +72,15 @@ const order = () => {
 
   const dataMerge = [].concat.apply([], dataSource);
 
-  console.log("data", dataMerge);
+  dataMerge?.forEach(function (element) {
+    element.key = Math.random();
+  });
+
+  // console.log("data", dataMerge);
+
+  if (isError) return <div>failed to load</div>;
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <div>
       <Table columns={columns} dataSource={dataMerge} />

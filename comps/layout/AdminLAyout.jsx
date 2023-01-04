@@ -7,6 +7,8 @@ import {
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -16,21 +18,37 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
-const items = [
-  getItem(<Link href="/admin">Dashboard</Link>, "1", <PieChartOutlined />),
-  getItem(<Link href="/admin/user">User</Link>, "2", <UserOutlined />),
-  getItem(<Link href="/admin/product">Product</Link>, "3", <ShopOutlined />),
-  getItem(
-    <Link href="/admin/order">Order</Link>,
-    "4",
-    <ShoppingCartOutlined />
-  ),
-];
+
 const AdminLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const items = [
+    getItem(<Link href="/admin">Dashboard</Link>, "1", <PieChartOutlined />),
+    getItem(<Link href="/admin/user">User</Link>, "2", <UserOutlined />),
+    getItem(<Link href="/admin/product">Product</Link>, "3", <ShopOutlined />),
+    getItem(
+      <Link href="/admin/order">Order</Link>,
+      "4",
+      <ShoppingCartOutlined />
+    ),
+    getItem(
+      <Link href="/admin/login" onClick={() => signOut()}>
+        Logout
+      </Link>,
+      "5",
+      <ShoppingCartOutlined />
+    ),
+  ];
+
+  // function logoutHandler(e) {
+  //   e.preventDefault();
+  //   signOut();
+  //   router.push("/admin/");
+  // }
+
   return (
     <Layout
       style={{

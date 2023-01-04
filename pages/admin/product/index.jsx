@@ -1,46 +1,126 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "antd";
-import useSWR from "swr";
-import axios from "axios";
 import AdminLayout from "../../../comps/layout/AdminLAyout";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useFetcher } from "../../../customhooks/useFetcher";
 
 const columns = [
+  {
+    title: "Image",
+    dataIndex: "img",
+    key: "img",
+    render: (img) => (
+      <>
+        <img src={`${img}`} />{" "}
+      </>
+    ),
+  },
   {
     title: "Title",
     dataIndex: "title",
     key: "title",
   },
   {
-    title: "Description",
-    dataIndex: "desc",
-    key: "desc",
+    title: "Categories",
+    dataIndex: "categries",
+    key: "categries",
+    render: (categries) => (
+      <div className="flex flex-col">
+        {categries.map((c) => (
+          <span className="capitalize" key={Math.random() * 100}>
+            {c}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+  {
+    title: "Categories",
+    dataIndex: "categries",
+    key: "categries",
+    render: (categries) => (
+      <div className="flex flex-col">
+        {categries.map((c) => (
+          <span className="capitalize" key={Math.random() * 100}>
+            {c}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+
+  {
+    title: "In Stock",
+    dataIndex: "inStock",
+    key: "inStock",
+    render: (inStock) => <>{inStock ? "In Stock" : "Out of Stock"}</>,
+  },
+  {
+    title: "Color",
+    dataIndex: "color",
+    key: "color",
+    render: (color) => (
+      <div className="flex flex-col">
+        {color.map((c) => (
+          <span className="capitalize" key={Math.random() * 100}>
+            {c}
+          </span>
+        ))}
+      </div>
+    ),
+  },
+
+  {
+    title: "Size",
+    dataIndex: "size",
+    key: "size",
+    render: (size) => (
+      <div className="flex flex-col">
+        {size.map((s) => (
+          <span className="capitalize" key={Math.random() * 100}>
+            {s}
+          </span>
+        ))}
+      </div>
+    ),
   },
   {
     title: "Price",
     dataIndex: "price",
     key: "price",
   },
+  {
+    title: "Description",
+    dataIndex: "desc",
+    key: "desc",
+  },
 ];
 
-const fetcher = (url) =>
-  axios
-    .get(url, {
-      headers: {
-        token:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDQyNmNmMzIzZmQxNTc0NzM5OGY1NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjU3MTIzNiwiZXhwIjoxNjcyODMwNDM2fQ.l21nvnrntq6c8IaqRX5JhjsBLV_bseU0ZoAWAY8-CBI",
-      },
-    })
-    .then((res) => res.data);
-
 const product = () => {
-  const { data, error } = useSWR(
-    ["https://ecommerce-mern-api.vercel.app/api/products/"],
-    fetcher
-  );
-  const products = data;
+  const session = useSession();
+  const router = useRouter();
 
-  console.log(data);
+  console.log("admin", session?.data?.isAdmin);
+  useEffect(() => {
+    if (session?.data?.isAdmin !== true) {
+      router.push("/admin/login");
+    }
+  }, []);
+
+  const { data, isError, isLoading } = useFetcher([
+    "products",
+    session.data?.accessToken,
+  ]);
+  const products = data;
+  products?.forEach(function (element) {
+    element.key = Math.random() * 100;
+  });
+
+  // console.log("products", products);
+
+  if (isError) return <div>failed to load</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return <Table columns={columns} dataSource={products} />;
 };

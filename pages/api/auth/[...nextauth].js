@@ -24,15 +24,15 @@ export const authOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      // Persist the OAuth access_token to the token right after signin
       if (user) {
         token.isAdmin = user.data.isAdmin;
+        token.accessToken = user.data.accessToken;
       }
       return token;
     },
     async session({ session, token, user }) {
-      // Send properties to the client, like an access_token from a provider.
       session.isAdmin = token.isAdmin;
+      session.accessToken= token.accessToken;
       return session;
     },
   },
