@@ -3,7 +3,7 @@ import AdminLayout from "../../../comps/layout/AdminLAyout";
 import { Table } from "antd";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useFetcher } from "../../../customhooks/useFetcher";
+import { useGet } from "../../../customhooks/customRequests";
 
 const columns = [
   {
@@ -34,7 +34,7 @@ const User = () => {
     }
   }, []);
 
-  const { data, IsError, isLoading } = useFetcher([
+  const { data, IsError, isLoading } = useGet([
     "users",
     session?.data?.accessToken,
   ]);

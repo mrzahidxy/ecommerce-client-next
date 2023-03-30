@@ -3,7 +3,7 @@ import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import AdminLayout from "../../../comps/layout/AdminLAyout";
-import { useFetcher } from "../../../customhooks/useFetcher";
+import { useGet } from "../../../customhooks/customRequests";
 
 const columns = [
   {
@@ -44,7 +44,7 @@ const order = () => {
 
   Handler();
 
-  const { data, isError, isLoading } = useFetcher([
+  const { data, isError, isLoading } = useGet([
     "orders",
     session.data?.accessToken,
   ]);

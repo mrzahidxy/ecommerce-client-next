@@ -17,20 +17,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     );
   }
 
-  //dark mode function
-  // const darkMode = () => {
-  //   typeof window !== "undefined" && localStorage.setItem("mode", "dark");
-  //   setRender(!render);
-  // };
-  // const lightMode = () => {
-  //   typeof window !== "undefined" && localStorage.setItem("mode", "");
-  //   setRender(!render);
-  // };
-
-  // useEffect(() => {
-  //   setDark(localStorage.getItem("mode"));
-  // }, [render]);
-
   return (
     <div className={`${dark}`}>
       <div className="w-full space-x-2 dark:bg-gray-800 ">

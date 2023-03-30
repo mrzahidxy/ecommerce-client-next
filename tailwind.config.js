@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./comps/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./comps/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
       sm: "576px",
@@ -24,6 +21,9 @@ module.exports = {
       },
       colors: {
         primary: "#FD3d57",
+      },
+      backgroundImage: {
+        banner: "url('/assets/images/banner.jpg')",
       },
     },
   },

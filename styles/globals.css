@@ -19,7 +19,13 @@
 }
 
 @layer components {
-  .footer-text {
-    @apply text-gray-500 text-sm dark:text-white;
+  @layer components {
+    .footer-text {
+      @apply text-gray-500 text-sm dark:text-white;
+    }
+
+    .input-box {
+      @apply border w-full;
+    }
   }
 }

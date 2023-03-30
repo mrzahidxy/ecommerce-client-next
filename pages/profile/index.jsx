@@ -1,33 +1,21 @@
-import { getSession, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { getSession } from "next-auth/react";
 
-const index = () => {
-  const { data: session, status } = useSession();
-
-  const router = useRouter();
-  // const [loading, setLoading] = useState(true);
-  // const session = getSession();
-
-  // useEffect(() => {
-  //   const securePage = async () => {
-  //     const session = await getSession();
-  //     if (!session) {
-  //       router.push("/login");
-  //     } else {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   securePage();
-  // }, []);
-  // if (loading) {
-  //   return <h1>Loading</h1>;
-  // }
-
-  if (status === "unauthenticated") {
-    router.push("/login");
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
   }
+  return {
+    props: { session },
+  };
+}
+
+const index = ({ session }) => {
   return (
     <div className="container py-8 font-medium text-3xl capitalize">
       Profile
